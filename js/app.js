@@ -135,7 +135,7 @@ resultsButton.addEventListener('click', showResults);
 
 
 let canvasElem = document.getElementById('myChart').getContext('2d');
-let chart = null;
+
 
 function renderChart(){
 
@@ -187,6 +187,6 @@ function renderChart(){
     }
   };
 
-  chart = new Chart(canvasElem, myObj);
+new Chart(canvasElem, myObj);
 
 }
