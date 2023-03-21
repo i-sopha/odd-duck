@@ -46,23 +46,39 @@ console.log('CURRENT STATE', state);
 renderImgs();
 
 function generateRandomImage() {
-  return Math.floor(Math.random() * state.length);
+    let randomIndex = Math.floor(Math.random() * state.length);
+    let randomImage = state[randomIndex];
+
+    while (randomImage.name === imgEls[0].id || randomImage.name === imgEls[1].id || randomImage.name === imgEls[2].id) {
+        randomIndex = Math.floor(Math.random() * state.length);
+        randomImage = state[randomIndex];
+    }
+
+    return randomImage;
+
 }
 
+
+
 function renderImgs() {
-  let img1 = state[generateRandomImage()];
-  let img2 = state[generateRandomImage()];
-  let img3 = state[generateRandomImage()];
+  let img1 = generateRandomImage();
+  let img2 = generateRandomImage();
+  let img3 = generateRandomImage();
   while (img1.name === img2.name || img1.name === img3.name || img2.name === img3.name) {
-    img3 = state[generateRandomImage()];
+        img1 = generateRandomImage();
+        img2 = generateRandomImage();
+        img3 = generateRandomImage();
+    
   }
 
   imgEls[0].src = img1.source;
   imgEls[0].id = img1.name;
   img1.timesShown += 1;
+
   imgEls[1].src = img2.source;
   imgEls[1].id = img2.name;
   img2.timesShown += 1;
+
   imgEls[2].src = img3.source;
   imgEls[2].id = img3.name;
   img3.timesShown += 1;
@@ -101,8 +117,76 @@ function showResults() {
         let liEl = document.createElement('li');
         liEl.textContent = `${state[i].name} had ${state[i].timesClicked} votes, and was seen ${state[i].timesShown} times.`;
         resultsEl.appendChild(liEl);
+        
     }
+    renderChart();
 }
 
 let resultsButton = document.getElementById('show-results');
 resultsButton.addEventListener('click', showResults);
+
+
+
+
+
+
+// Chart
+
+
+
+let canvasElem = document.getElementById('myChart').getContext('2d');
+let chart = null;
+
+function renderChart(){
+
+  let imgName = [];
+  let imgShown = [];
+  let imgVotes = [];
+
+  for(let i = 0; i < state.length; i++){
+    imgName.push(state[i].name);
+    imgShown.push(state[i].timesShown);
+    imgVotes.push(state[i].timesClicked);
+  }
+
+  let myObj = {
+    type: 'bar',
+    data: {
+      labels: imgName,
+      datasets: [{
+        label: '# of Views',
+        data: imgShown,
+        backgroundColor: [
+          'blue'
+        ],
+        borderColor: [
+          'blue'
+        ],
+        borderWidth: 1
+        // backgroundColor: 'rgba(34, 166, 179, 3)',
+        // borderColor: 'rgba(34, 166, 179, 10)',
+      },
+      {
+        label: '# of Votes',
+        data: imgVotes,
+        backgroundColor: [
+          'red'
+        ],
+        borderColor: [
+          'red'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+
+  chart = new Chart(canvasElem, myObj);
+
+}
