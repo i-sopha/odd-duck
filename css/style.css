@@ -11,6 +11,7 @@ main {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     width: 100%;
     background-color: rgb(234, 255, 0);
+    height: 1000px;
 }
 
 .chart1 {
@@ -37,7 +38,6 @@ img {
 }
 
 canvas {
-    margin-bottom: 100px;
     width: 100px;
 } 
 
