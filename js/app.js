@@ -3,11 +3,12 @@
 let state = [];
 let roundsOfVoting = 25;
 
-function Image(name, source) {
+function Image(name, source, alt) {
   this.name = name;
   this.source = source;
   this.timesClicked = 0;
   this.timesShown = 0;
+  this.altTxt = alt;
 }
 
 let retrieveState = localStorage.getItem('state');
@@ -16,25 +17,25 @@ if (retrieveState) {
   let parsedState = JSON.parse(retrieveState);
   state = parsedState;
 } else {
-  state.push(new Image('bag', 'img/bag.jpg'));
-  state.push(new Image('banana', 'img/banana.jpg'));
-  state.push(new Image('bathroom', 'img/bathroom.jpg'));
-  state.push(new Image('boots', 'img/boots.jpg'));
-  state.push(new Image('breakfast', 'img/breakfast.jpg'));
-  state.push(new Image('bubblegum', 'img/bubblegum.jpg'));
-  state.push(new Image('chair', 'img/chair.jpg'));
-  state.push(new Image('cthulhu', 'img/cthulhu.jpg'));
-  state.push(new Image('dog duck', 'img/dog-duck.jpg'));
-  state.push(new Image('dragon', 'img/dragon.jpg'));
-  state.push(new Image('pen', 'img/pen.jpg'));
-  state.push(new Image('pet sweep', 'img/pet-sweep.jpg'));
-  state.push(new Image('scissors', 'img/scissors.jpg'));
-  state.push(new Image('shark', 'img/shark.jpg'));
-  state.push(new Image('sweep', 'img/sweep.png'));
-  state.push(new Image('tauntaun', 'img/tauntaun.jpg'));
-  state.push(new Image('unicorn', 'img/unicorn.jpg'));
-  state.push(new Image('water can', 'img/water-can.jpg'));
-  state.push(new Image('wine glass', 'img/wine-glass.jpg'));
+  state.push(new Image('bag', 'img/bag.jpg', `bag`));
+  state.push(new Image('banana', 'img/banana.jpg', `banana`));
+  state.push(new Image('bathroom', 'img/bathroom.jpg', `bathroom`));
+  state.push(new Image('boots', 'img/boots.jpg', `boots`));
+  state.push(new Image('breakfast', 'img/breakfast.jpg', `breakfast`));
+  state.push(new Image('bubblegum', 'img/bubblegum.jpg', `bubblegum`));
+  state.push(new Image('chair', 'img/chair.jpg', `chair`));
+  state.push(new Image('cthulhu', 'img/cthulhu.jpg', `cthulhu`));
+  state.push(new Image('dog duck', 'img/dog-duck.jpg', `dog duck`));
+  state.push(new Image('dragon', 'img/dragon.jpg', `dragon`));
+  state.push(new Image('pen', 'img/pen.jpg', `pen`));
+  state.push(new Image('pet sweep', 'img/pet-sweep.jpg', `pet sweep`));
+  state.push(new Image('scissors', 'img/scissors.jpg', `scissors`));
+  state.push(new Image('shark', 'img/shark.jpg', 'shark'));
+  state.push(new Image('sweep', 'img/sweep.png', 'sweep'));
+  state.push(new Image('tauntaun', 'img/tauntaun.jpg', 'tauntaun'));
+  state.push(new Image('unicorn', 'img/unicorn.jpg', 'unicorn'));
+  state.push(new Image('water can', 'img/water-can.jpg', 'water can'));
+  state.push(new Image('wine glass', 'img/wine-glass.jpg', 'wine glass'));
 }
 
 

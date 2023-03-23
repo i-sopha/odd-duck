@@ -30,3 +30,10 @@ Below are your lab requirements in this format. Try and think up what the featur
 
 - lab 11:
     > ![lighthouse](./img/lighthouse.png)
+
+- lab 12:
+    > ![Lighthouse](./img/lighthouse2.png)
+
+- lab 13: 
+    > ![Lighthouse](./img/lighthouse2.png)
+
