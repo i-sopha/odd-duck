@@ -11,6 +11,9 @@ function Image(name, source, alt) {
   this.altTxt = alt;
 }
 
+
+// The code then checks for the existence of a state array in local storage, and if it exists, it parses and sets the parsed array as the value of the state variable. Otherwise, the code creates 18 image objects and adds them to the state array.
+
 let retrieveState = localStorage.getItem('state');
 
 if (retrieveState) {
@@ -39,39 +42,7 @@ if (retrieveState) {
 }
 
 
-// const products = [
-//   new Image('bag', 'img/bag.jpg'),
-//   new Image('banana', 'img/banana.jpg'),
-//   new Image('bathroom', 'img/bathroom.jpg'),
-//   new Image('boots', 'img/boots.jpg'),
-//   new Image('breakfast', 'img/breakfast.jpg'),
-//   new Image('bubblegum', 'img/bubblegum.jpg'),
-//   new Image('chair', 'img/chair.jpg'),
-//   new Image('cthulhu', 'img/cthulhu.jpg'),
-//   new Image('dog duck', 'img/dog-duck.jpg'),
-//   new Image('dragon', 'img/dragon.jpg'),
-//   new Image('pen', 'img/pen.jpg'),
-//   new Image('pet sweep', 'img/pet-sweep.jpg'),
-//   new Image('scissors', 'img/scissors.jpg'),
-//   new Image('shark', 'img/shark.jpg'),
-//   new Image('sweep', 'img/sweep.png'),
-//   new Image('tauntaun', 'img/tauntaun.jpg'),
-//   new Image('unicorn', 'img/unicorn.jpg'),
-//   new Image('water can', 'img/water-can.jpg'),
-//   new Image('wine glass', 'img/wine-glass.jpg')
-// ];
-
-// const productsJson = localStorage.getItem('products');
-// const parsedProducts = JSON.parse(productsJson);
-
-// const productsFromStorage = parsedProducts.map(products => {
-//   return new Image(products.id, products.name, products.price);
-// });
-
-// console.log(localStorage);
-
-
-
+// The code then selects all the image elements in the HTML document and assigns them to the imgEls variable. It also selects the vote-tracker element and assigns it to the voteTrackerEl variable. The code then defines a function called generateRandomImage that randomly selects an image object from the state array and returns it.
 
 
 let imgEls = document.querySelectorAll('img');
@@ -102,7 +73,7 @@ function generateRandomImage() {
 
 }
 
-
+// The renderImgs function uses the generateRandomImage function to select three random images and assigns them to img1, img2, and img3 variables. It then checks if any two of the three images have the same name, and if so, generates three new random images until all three are different. It then assigns the source and id properties of each image element to the corresponding image object's source and name properties, respectively. Finally, it increments the timesShown property of the first image object by one.
 
 function renderImgs() {
   let img1 = generateRandomImage();
@@ -128,6 +99,8 @@ function renderImgs() {
   img3.timesShown += 1;
 
 }
+
+// 
 
 function handleImgClick(event) {
   console.log(event.target);
@@ -239,3 +212,5 @@ function renderChart(){
 new Chart(canvasElem, myObj);
 
 }
+
+
